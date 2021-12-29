@@ -33,7 +33,7 @@ const HomePage = ({ ads }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await fetch(`${process.env.ADS_BACKEND_URL}ads`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_ADS_BACKEND_URL}ads`);
   const data: Ad[] = await res.json();
 
   const ads = data

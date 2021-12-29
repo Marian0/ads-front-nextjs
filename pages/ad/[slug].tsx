@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     };
   }
   const res = await fetch(
-    `${process.env.ADS_BACKEND_URL}ads/${context.params.slug}`
+    `${process.env.NEXT_PUBLIC_ADS_BACKEND_URL}ads/${context.params.slug}`
   );
 
   if (res.status === 404) {
