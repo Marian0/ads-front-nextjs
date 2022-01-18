@@ -80,7 +80,7 @@ export default function Signup() {
         duration: 9000,
         isClosable: true,
       });
-      console.log("ERROL", error);
+      // console.log("ERROL", error);
     }
     setIsLoading(false);
   };
@@ -108,6 +108,7 @@ export default function Signup() {
                 </InputLeftElement>
                 <Input
                   defaultValue=""
+                  id="email"
                   placeholder="Please, type your email..."
                   type="email"
                   {...register("email", { required: true })}
@@ -122,6 +123,7 @@ export default function Signup() {
                   <RiLockPasswordFill />
                 </InputLeftElement>
                 <Input
+                  id="password"
                   placeholder="Please, type a password..."
                   type={showPassword ? "text" : "password"}
                   {...register("password", { required: true })}
