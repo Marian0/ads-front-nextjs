@@ -1,24 +1,15 @@
 import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
-import Router from "next/router";
 import React from "react";
 
 import Layout from "../components/Layout";
-import LoadingOverlay from "../components/LoadingOverlay";
-import { useAuthUser } from "../contexts/auth-user-context";
+import { AuthUser } from "../contexts/auth-user-context";
+import { withAuthUser } from "../hocs/withAuthUser";
 
-const Privada = () => {
-  const { authProcessFinished, authUser } = useAuthUser();
+type Props = {
+  authUser: AuthUser;
+};
 
-  if (!authProcessFinished) {
-    return <LoadingOverlay />;
-  }
-
-  if (!authUser) {
-    Router.push("/signin");
-
-    return null;
-  }
-
+const Profile = ({ authUser }: Props) => {
   return (
     <Layout>
       <Box>
@@ -35,4 +26,4 @@ const Privada = () => {
   );
 };
 
-export default Privada;
+export default withAuthUser(Profile);

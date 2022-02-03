@@ -11,7 +11,7 @@ import React, {
 import { JWTPayload } from "../types/jwt-payload";
 import { User } from "../types/user";
 
-type AuthUser = {
+export type AuthUser = {
   user: User | null;
   jwtPayload: JWTPayload | null;
 };
@@ -66,15 +66,18 @@ const AuthUserProvider = (props: { children: ReactNode }): ReactElement => {
         requestOptions
       );
 
+      if (!response.ok || response.status !== 200) {
+        throw new Error("Error while hiting me endpoint");
+      }
+
       const user = await response.json();
 
       // console.log("jwtPayload", jwtPayload);
       // console.log("user", user);
-
       setAuthUser({ jwtPayload, user });
     } catch (error) {
+      // console.log("error", error);
       setAuthUser(null);
-      console.log("error", error);
     }
 
     // Server delay example
@@ -88,7 +91,7 @@ const AuthUserProvider = (props: { children: ReactNode }): ReactElement => {
       setAuthUser(null);
       setAuthProcessFinished(true);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     }
   };
 
@@ -96,7 +99,7 @@ const AuthUserProvider = (props: { children: ReactNode }): ReactElement => {
     try {
       localStorage.setItem(tokenVarName, bearerToken);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     }
   };
 
