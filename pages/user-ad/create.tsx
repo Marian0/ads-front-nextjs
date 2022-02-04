@@ -73,6 +73,7 @@ const CreateAd = ({ authUser }: Props) => {
         title: "Ad created successfully!",
         description:
           "The Ad has been correctly submitted. An administrartor will validate it soon! Stay tune!",
+        status: "success",
       });
 
       router.push(`/ad/${jsonResponse.slug}`);
