@@ -51,6 +51,20 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
           )}
           {authUser && (
             <>
+              <Link passHref href="/user-ad/create">
+                <Button
+                  variant={pathname === "/user-ad/create" ? "outline" : "solid"}
+                >
+                  Create Ad
+                </Button>
+              </Link>
+              <Link passHref href="/user-ad/list">
+                <Button
+                  variant={pathname === "/user-ad/list" ? "outline" : "solid"}
+                >
+                  My Ads
+                </Button>
+              </Link>
               <Link passHref href="/profile">
                 <Button variant={pathname === "/profile" ? "outline" : "solid"}>
                   Profile

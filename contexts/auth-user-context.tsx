@@ -14,6 +14,7 @@ import { User } from "../types/user";
 export type AuthUser = {
   user: User | null;
   jwtPayload: JWTPayload | null;
+  jwtToken: string | null;
 };
 
 type AuthUserContextType = {
@@ -74,7 +75,7 @@ const AuthUserProvider = (props: { children: ReactNode }): ReactElement => {
 
       // console.log("jwtPayload", jwtPayload);
       // console.log("user", user);
-      setAuthUser({ jwtPayload, user });
+      setAuthUser({ jwtPayload, user, jwtToken: bearerToken });
     } catch (error) {
       // console.log("error", error);
       setAuthUser(null);
